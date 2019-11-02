@@ -12,22 +12,28 @@
 // });
 
 const fetch = require("node-fetch");
-const query = `
-query MyQuery {
-    goals {
-      allowed_fails
-      amount
-      decay
-      fail
-      id
-      metrics
-      provider
-    }
-  }
-`;
-const url = "https://hs-goals.herokuapp.com/v1/graphql";
+
 
 async function fetchGoals(){
+    const query = `
+    query MyQuery {
+        goals {
+        allowed_fails
+        amount
+        decay
+        fail
+        id
+        provider
+        recurrence
+        start_date
+        succ
+        successful_recurrences
+        user_id
+        type
+        }
+    }
+    `;
+    const url = "https://hs-goals.herokuapp.com/v1/graphql";
     let response = await fetch(url, { 
         method: 'POST',
         Accept: 'api_version=2',
@@ -40,7 +46,46 @@ async function fetchGoals(){
 }
 
 async function main() {
-    console.log(await fetchGoals());
+    const goals = await fetchGoals();
+    console.log(goals);
+
 }
 
 main();
+
+/**
+ * 
+ * @param {type, start_date, current_date} parameters 
+ * @return {json object}
+ */
+async function getProviderResources(parameters){
+    const url = getResourceUrl(parameters.types);
+    let response = await fetch(url);
+    response = await response.json();
+    return response;
+}
+/**
+ * 
+ * @param {string} provider
+ * @returns {string} 
+ */
+function getResourceUrl(type){
+    //TODO: create CapitalOne Account 
+    const customerId = "5dbdef083c8c2216c9fcb723";
+    const accountId = 0;
+
+    switch(type){
+        case 'gambling':
+        case 'drinking':
+            return `http://api.reimaginebanking.com/merchants/${accountID}/purchases?key=c5f3464801f939e6265763316ccfb35b`;
+    }
+}
+
+function test(){
+    console.log(getResourceUrl("capital_one"));
+    let mockParameters = {
+        type: "alcohol",
+        start_date: Date.now(),
+        current_date: Date.now()
+    }
+}
