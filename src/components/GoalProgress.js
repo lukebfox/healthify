@@ -1,13 +1,11 @@
 import React from "react";
-import { mdiSkull, mdiSkullOutline, mdiHeart, mdiHeartOutline } from "@mdi/js";
+import { mdiHeart, mdiCheckCircle, mdiCheckCircleOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 
 function Failures({ numFailures, allowedFailures }) {
-  return new Array(allowedFailures)
+  return new Array(allowedFailures - numFailures)
     .fill()
-    .map((_, i) => (
-      <Icon size={1} path={i < numFailures ? mdiSkull : mdiSkullOutline} />
-    ));
+    .map(() => <Icon color="red" size={1} path={mdiHeart} />);
 }
 
 function Success({ numSuccess, maxSuccess }) {
@@ -15,9 +13,9 @@ function Success({ numSuccess, maxSuccess }) {
     .fill()
     .map((_, i) => (
       <Icon
-        color="red"
+        color={i < numSuccess ? "green" : "grey"}
         size={1}
-        path={i < numSuccess ? mdiHeart : mdiHeartOutline}
+        path={i < numSuccess ? mdiCheckCircle : mdiCheckCircleOutline}
       />
     ));
 }

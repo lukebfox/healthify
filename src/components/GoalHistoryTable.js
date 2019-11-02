@@ -5,7 +5,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
-export default function GoalHistoryTable({ headings, rows, cmp, cmpItem }) {
+export default function GoalHistoryTable({
+  headings = [],
+  rows = [],
+  cmp,
+  cmpItem
+}) {
   return (
     <Table>
       <TableHead>
