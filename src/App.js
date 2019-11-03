@@ -2,6 +2,7 @@ import React from "react";
 import FormPage from "./FormPage.jsx";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import GoalsPage from "./GoalsPage.js";
+import Logo from "./logo.png";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
