@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { Form } from "./Form.jsx";
 import Paper from "@material-ui/core/Paper";
 import * as Yup from "yup";
+import { withRouter } from "react-router";
 
 const styles = theme => ({
   paper: {
@@ -33,7 +34,7 @@ class FormPage extends Component {
          <Paper elevation={1} className={classes.paper}>
            <h1>Form a Habit</h1>
            <Formik
-             render={props => <Form {...props} />}
+             render={props => <Form {...props}/>}
            />
          </Paper>
        </div>

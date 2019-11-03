@@ -11,16 +11,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { withRouter } from "react-router";
 
 
-export const Form = (props) => {
+
+const Form = (props) => {
     const [date, setDate] = React.useState( new Date('2014-08-18T21:11:54'));
     const [category, setCategory] = React.useState(null);
     
   const handleDateChange = date => {
       setDate(date);
   };
-    const handleSelectChange = event => {
+  const handleSelectChange = event => {
       setCategory(event.target.value);
   }
     
@@ -43,7 +45,6 @@ export const Form = (props) => {
                     />
                   </ React.Fragment>
               )
-              break;
           case "gambling" :
               return (
                   <React.Fragment>
@@ -57,7 +58,6 @@ export const Form = (props) => {
                     />
                   </ React.Fragment>
               )
-              break;
           case "walking" :
               return (
                   <React.Fragment>
@@ -71,15 +71,13 @@ export const Form = (props) => {
                     />
                   </ React.Fragment>
               )
-              break;
           default:
               return <React.Fragment />
-              break;    
           }      
   };
 
   return (
-    <form onSubmit={() => {}}>
+      <form onSubmit={e => { e.preventDefault();console.log("hi");props.history.push("/goals")}}>
       <p>So you want to form a habit? By selecting the general category below, we'll use tailored metrics to accurately gauge your progress</p>
        <FormControl style={{minWidth: 120}}>
         <InputLabel id="demo-simple-select-label">Habit</InputLabel>
@@ -169,3 +167,5 @@ export const Form = (props) => {
    </form>
  );
 };
+
+export withRouter(Form)
