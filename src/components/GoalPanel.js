@@ -19,7 +19,11 @@ export default function GoalPanel({ goal }) {
 
   switch (goal.type) {
     case "drinking": {
-      title = `Spend a maximum of £${goal.quantity} on alcohol per ${timeString}`;
+      title = `Buy a maximum of ${goal.quantity} rounds of alcohol per ${timeString}`;
+      break;
+    }
+    case "gambling": {
+      title = `Place a maximum of ${goal.quantity} bets per ${timeString}`;
       break;
     }
     case "walking": {

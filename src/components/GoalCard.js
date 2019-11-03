@@ -23,7 +23,10 @@ export default function GoalCard({ goal }) {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <GoalHistoryTable
-              headings={{ end_date: "End Date", amount: "Amount" }}
+              headings={{
+                end_date: "End Date",
+                amount: goal.type === "drinking" ? "Rounds" : "Bets"
+              }}
               rows={goal.stats}
               cmp={amount => amount <= goal.quantity}
               cmpItem="amount"
