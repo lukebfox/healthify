@@ -2,7 +2,7 @@ import React from "react";
 import FormPage from "./FormPage.jsx";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import GoalsPage from "./GoalsPage.js";
-import SplashPage from "./SplashPage.js"
+import SplashPage from "./SplashPage.js";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -62,9 +62,9 @@ function App() {
       </AppBar>
       <Container maxWidth="sm">
         <Switch>
-          <Route path="/forms" component={FormPage} />
-          <Route path="/goals" component={GoalsPage} />
           <Route path="/" exact component={SplashPage} />
+          <Route path="/create_goal" component={FormPage} />
+          <Route path="/goals" component={GoalsPage} />
         </Switch>
       </Container>
     </Router>

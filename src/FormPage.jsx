@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Form } from "./Form.jsx";
+import Form from "./Form.jsx";
 import Paper from "@material-ui/core/Paper";
-import * as Yup from "yup";
-import { withRouter } from "react-router";
 
 const styles = theme => ({
   paper: {
@@ -26,21 +24,17 @@ class FormPage extends Component {
     this.state = {};
   }
 
- render() {
-   const classes = this.props;
-   return (
-     <React.Fragment>
-       <div className={classes.container}>
-         <Paper elevation={1} className={classes.paper}>
-           <h1>Form a Habit</h1>
-           <Formik
-             render={props => <Form {...props}/>}
-           />
-         </Paper>
-       </div>
-     </React.Fragment>
-   );
- }
+  render() {
+    const classes = this.props;
+    return (
+      <React.Fragment>
+        <div className={classes.container}>
+          <h1>Form a Habit</h1>
+          <Formik render={props => <Form {...props} />} />
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default withStyles(styles)(FormPage);
