@@ -14,7 +14,7 @@ import Select from "@material-ui/core/Select";
 import { withRouter } from "react-router";
 
 const Form = props => {
-  const [date, setDate] = React.useState(new Date("2014-08-18T21:11:54"));
+  const [date, setDate] = React.useState(new Date("2019-11-03T21:11:54"));
   const [category, setCategory] = React.useState(null);
 
   const handleDateChange = date => {
@@ -183,12 +183,10 @@ const Form = props => {
         min={0}
         max={100}
       />
-      <p>
-        Choose the start date for your habit! This is the day your Stake gets
-        locked away, and when the habit initiates.
-      </p>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
+     <p>Choose the start date for your habit! This is the day your Stake gets locked away, and when the habit initiates.</p>
+     <div className={"datepicker"}>
+     <MuiPickersUtilsProvider utils={DateFnsUtils}>
+       <KeyboardDatePicker
           margin="normal"
           id="start-date"
           label="Start date"
@@ -200,7 +198,8 @@ const Form = props => {
           }}
         />
       </MuiPickersUtilsProvider>
-      <Button type="submit" fullWidth variant="contained" color="primary">
+      </div>
+      <Button className={"submit"} type="submit" fullWidth variant="contained" color="primary">
         Submit
       </Button>
     </form>
