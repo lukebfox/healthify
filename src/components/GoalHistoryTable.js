@@ -15,21 +15,21 @@ export default function GoalHistoryTable({
     <Table>
       <TableHead>
         <TableRow>
-          {Object.values(headings).map(heading => (
+          {Object.values(headings)
+          .map(heading => (
             <TableCell>{heading}</TableCell>
           ))}
         </TableRow>
       </TableHead>
       <TableBody>
         {rows.map(row => (
-          <TableRow
-            style={{
-              backgroundColor: cmp(row[cmpItem]) ? "#a5d6a7" : "#ef9a9a"
-            }}
-            key={row[headings[0]]}
-          >
+          <TableRow key={row[headings[0]]}>
             {Object.keys(headings).map(heading => (
-              <TableCell>{row[heading]}</TableCell>
+              <TableCell
+                style={{ color: cmp(row[cmpItem]) ? "#1b5e20" : "#d50000" }}
+              >
+                {row[heading]}
+              </TableCell>
             ))}
           </TableRow>
         ))}
