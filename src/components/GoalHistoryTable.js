@@ -4,6 +4,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import moment from "moment";
 
 export default function GoalHistoryTable({
   headings = [],
@@ -15,8 +16,7 @@ export default function GoalHistoryTable({
     <Table>
       <TableHead>
         <TableRow>
-          {Object.values(headings)
-          .map(heading => (
+          {Object.values(headings).map(heading => (
             <TableCell>{heading}</TableCell>
           ))}
         </TableRow>
@@ -24,11 +24,13 @@ export default function GoalHistoryTable({
       <TableBody>
         {rows.map(row => (
           <TableRow key={row[headings[0]]}>
-            {Object.keys(headings).map(heading => (
+            {Object.keys(headings).map((heading, i) => (
               <TableCell
                 style={{ color: cmp(row[cmpItem]) ? "#1b5e20" : "#d50000" }}
               >
-                {row[heading]}
+                {i === 0
+                  ? moment(row[heading]).format("MMMM Do YYYY")
+                  : row[heading]}
               </TableCell>
             ))}
           </TableRow>
